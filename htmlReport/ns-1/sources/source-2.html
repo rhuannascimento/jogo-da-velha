@@ -1,0 +1,161 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Main</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">org.example</a>
+</div>
+
+<h1>Coverage Summary for Class: Main (org.example)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/25)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package org.example;
+&nbsp;
+&nbsp;import java.util.Scanner;
+&nbsp;//TIP To &lt;b&gt;Run&lt;/b&gt; code, press &lt;shortcut actionId=&quot;Run&quot;/&gt; or
+&nbsp;// click the &lt;icon src=&quot;AllIcons.Actions.Execute&quot;/&gt; icon in the gutter.
+<b class="nc">&nbsp;public class Main {</b>
+&nbsp;    static void main() {
+<b class="nc">&nbsp;        Scanner scanner = new Scanner(System.in);</b>
+<b class="nc">&nbsp;        JogoDaVelha jogo = new JogoDaVelha();</b>
+&nbsp;
+<b class="nc">&nbsp;        System.out.println(&quot;=== JOGO DA VELHA ===&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot;Use as posições de 1 a 9 para jogar (como um teclado numérico):&quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot; 1 | 2 | 3 &quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot; 4 | 5 | 6 &quot;);</b>
+<b class="nc">&nbsp;        System.out.println(&quot; 7 | 8 | 9 &quot;);</b>
+<b class="nc">&nbsp;        System.out.println();</b>
+&nbsp;
+<b class="nc">&nbsp;        while (!jogo.isJogoFinalizado()) {</b>
+<b class="nc">&nbsp;            System.out.println(jogo.getTabuleiroVisual());</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Turno do jogador: &quot; + jogo.getJogadorAtual());</b>
+<b class="nc">&nbsp;            System.out.print(&quot;Digite a posição (1-9): &quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;            if (scanner.hasNextInt()) {</b>
+<b class="nc">&nbsp;                int posicao = scanner.nextInt();</b>
+<b class="nc">&nbsp;                String resultado = jogo.realizarJogada(posicao);</b>
+<b class="nc">&nbsp;                System.out.println(&quot;&gt;&gt; &quot; + resultado);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                System.out.println(&quot;&gt;&gt; Entrada inválida! Digite um número.&quot;);</b>
+<b class="nc">&nbsp;                scanner.next(); // Limpa o buffer</b>
+&nbsp;            }
+<b class="nc">&nbsp;            System.out.println(&quot;-----------------------------&quot;);</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        System.out.println(jogo.getTabuleiroVisual());</b>
+<b class="nc">&nbsp;        System.out.println(&quot;FIM DE JOGO!&quot;);</b>
+<b class="nc">&nbsp;        if (jogo.getVencedor() != null) {</b>
+<b class="nc">&nbsp;            System.out.println(&quot;Vencedor: &quot; + jogo.getVencedor());</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            System.out.println(&quot;Deu Velha (Empate)!&quot;);</b>
+&nbsp;        }
+&nbsp;
+&nbsp;        scanner.close();
+&nbsp;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-12-30 14:57</div>
+</div>
+</body>
+</html>
