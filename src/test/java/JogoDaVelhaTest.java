@@ -161,4 +161,45 @@ public class JogoDaVelhaTest {
         String resultado = jogo.realizarJogada(-1);
         assertEquals("Jogada rejeitada: Posição inválida", resultado);
     }
+
+    // ---------------------------------------------------
+    // PARTE II-B: TESTES ESTRUTURAIS (TestSet-Estr)
+    // Objetivo: Cobrir linhas vermelhas e amarelas do EclEmma
+    // ---------------------------------------------------
+
+    // CT20: Cobre o método getTabuleiroVisual()
+    @Test
+    public void testCT21_CoberturaVisual() {
+        jogo.realizarJogada(5); // X no centro
+        String visual = jogo.getTabuleiroVisual();
+
+        assertNotNull(visual);
+        assertTrue(visual.contains("X"));
+        assertTrue(visual.contains("|"));
+        assertTrue(visual.contains("---"));
+    }
+
+    // CT21: Cobre a Diagonal Secundária
+    @Test
+    public void testCT22_VitoriaDiagonalSecundaria() {
+        jogo.realizarJogada(3); // X (topo-direita)
+        jogo.realizarJogada(1); // O
+        jogo.realizarJogada(5); // X (centro)
+        jogo.realizarJogada(2); // O
+        String resultado = jogo.realizarJogada(7); // X (baixo-esquerda)
+
+        assertEquals("Vitória de X", resultado);
+        assertTrue(jogo.isJogoFinalizado());
+    }
+
+    // CT22: Teste explícito do reiniciar
+    @Test
+    public void testCT23_ReiniciarJogo() {
+        jogo.realizarJogada(1);
+        jogo.reiniciar();
+
+        assertEquals("X", jogo.getJogadorAtual());
+        assertEquals(" ", jogo.getPosicao(1));
+        assertFalse(jogo.isJogoFinalizado());
+    }
 }
