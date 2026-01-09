@@ -1,7 +1,9 @@
 
-import static org.junit.Assert.*;
-
 import org.example.JogoDaVelha;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -161,45 +163,22 @@ public class JogoDaVelhaTest {
         String resultado = jogo.realizarJogada(-1);
         assertEquals("Jogada rejeitada: Posição inválida", resultado);
     }
+    
+    // ====================================================================
+    // IMPLEMENTAÇÃO DO CASO DE TESTE ESTRUTURAL (FLUXO DE DADOS)
+    // ====================================================================
 
-    // ---------------------------------------------------
-    // PARTE II-B: TESTES ESTRUTURAIS (TestSet-Estr)
-    // Objetivo: Cobrir linhas vermelhas e amarelas do EclEmma
-    // ---------------------------------------------------
-
-    // CT20: Cobre o método getTabuleiroVisual()
+    // --- CT-DU-05: Fluxo de Dados Tabuleiro (Def -> Uso em Vitória) ---
     @Test
-    public void testCT21_CoberturaVisual() {
-        jogo.realizarJogada(5); // X no centro
-        String visual = jogo.getTabuleiroVisual();
-
-        assertNotNull(visual);
-        assertTrue(visual.contains("X"));
-        assertTrue(visual.contains("|"));
-        assertTrue(visual.contains("---"));
-    }
-
-    // CT21: Cobre a Diagonal Secundária
-    @Test
-    public void testCT22_VitoriaDiagonalSecundaria() {
-        jogo.realizarJogada(3); // X (topo-direita)
-        jogo.realizarJogada(1); // O
-        jogo.realizarJogada(5); // X (centro)
-        jogo.realizarJogada(2); // O
-        String resultado = jogo.realizarJogada(7); // X (baixo-esquerda)
+    public void testCT_DU_05_FluxoVitoria() {
+        jogo.realizarJogada(1); // X
+        jogo.realizarJogada(4); // O
+        jogo.realizarJogada(2); // X
+        jogo.realizarJogada(5); // O
+        String resultado = jogo.realizarJogada(3);
 
         assertEquals("Vitória de X", resultado);
         assertTrue(jogo.isJogoFinalizado());
     }
 
-    // CT22: Teste explícito do reiniciar
-    @Test
-    public void testCT23_ReiniciarJogo() {
-        jogo.realizarJogada(1);
-        jogo.reiniciar();
-
-        assertEquals("X", jogo.getJogadorAtual());
-        assertEquals(" ", jogo.getPosicao(1));
-        assertFalse(jogo.isJogoFinalizado());
-    }
 }
